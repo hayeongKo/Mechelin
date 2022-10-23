@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.mechelin">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!--갤러리 권한-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Mechelin"
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:theme">
+
+        <activity
+            android:name="com.example.mechelin.ui.splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.example.mechelin.ui.main.MainActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".ui.search.SearchPlaceActivity"/>
+        <activity android:name=".ui.savestore.WritingActivity"
+                  android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".ui.main.search.SearchActivity"/>
+        <activity android:name=".ui.savestore.PopupScoreActivity" android:theme="@style/Transparent"/>
+        <activity android:name=".ui.mypage.MypageActivity"/>
+        <activity android:name=".ui.resign.ResignActivity"/>
+        <activity android:name=".ui.signup.SignupActivity"/>
+        <activity android:name=".ui.signin.LoginActivity"/>
+        <activity android:name=".ui.signin.LoginmainActivity"/>
+        <activity android:name=".ui.detail.DetailActivity"/>
+        <activity android:name=".ui.main.SearchwordHashtagActivity"/>
+        <activity android:name=".ui.signup.SignUpTermActivity"/>n
+        
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.mechelin.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <!-- authorities="현재 패키지명.FileProvider" 이 앱의 파일 프로바이더에 권한 부여-->
+            <!--grantUriPermissions=사진 가져올 때 주소 필요해서 true-->
+
+            <!--찍은 사진 저장될 주소-->
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/external" />
+        </provider>
+    </application>
+
+
+
+</manifest>
